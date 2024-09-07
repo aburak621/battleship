@@ -1,0 +1,38 @@
+{
+  "name": "web-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "watch": "webpack --watch",
+    "dev": "webpack serve --open-app-name chrome --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "publish-page": "git subtree push --prefix dist origin gh-pages"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "jest": {
+    "transform": {}
+  },
+  "devDependencies": {
+    "@types/jest": "*",
+    "css-loader": "*",
+    "eslint": "*",
+    "eslint-config-airbnb": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jest": "*",
+    "html-loader": "*",
+    "html-webpack-plugin": "*",
+    "jest": "*",
+    "style-loader": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "*",
+    "webpack-merge": "*"
+  },
+  "dependencies": {}
+}

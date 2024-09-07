@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "plugins": ["jest"],
+  "rules": {
+    "semi": "error",
+    "quotes": "error",
+    "indent": "error",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "consistent-return": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "webpack.*.js"
+        ]
+      }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "jest/globals": true
+  }
+}
