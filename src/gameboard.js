@@ -26,7 +26,9 @@ class Gameboard {
       return false;
     }
 
-    cell.ship.hit();
+    if (cell.ship !== null) {
+      cell.ship.hit();
+    }
     cell.isShot = true;
     return true;
   }
