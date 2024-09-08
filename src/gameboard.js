@@ -45,6 +45,17 @@ class Gameboard {
     }
     return true;
   }
+
+  print() {
+    let str = '';
+    for (let y = 0; y < this.board.length; y++) {
+      for (let x = 0; x < this.board.length; x++) {
+        str += `${this.board[x][y].ship !== null ? 'O' : '-'}`;
+      }
+      str += '\n';
+    }
+    console.log(str);
+  }
 }
 
 export default Gameboard;
