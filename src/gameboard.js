@@ -15,9 +15,15 @@ class Gameboard {
 
   addShip(x, y, length, vertical = false) {
     const ship = new Ship(length);
-    for (let i = 0; i < length; i++) {
-      this.setShip(x + i * !!vertical, y + i * !vertical, ship);
+    if (!vertical && x + length >= this.board.length ||
+      vertical && y + length >= this.board[0].length) {
+      return false;
     }
+
+    for (let i = 0; i < length; i++) {
+      this.setShip(x + i * !vertical, y + i * vertical, ship);
+    }
+    return true;
   }
 
   receiveAttack(x, y) {
