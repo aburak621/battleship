@@ -33,3 +33,12 @@ test('game board denies attacking an attacked cell', () => {
   expect(board.receiveAttack(4, 6)).toStrictEqual(true);
   expect(board.receiveAttack(4, 6)).toStrictEqual(false);
 });
+
+test('game board checks for gameover', () => {
+  const board = new Gameboard();
+  board.addShip(5, 5, 2);
+  expect(board.isGameOver()).toStrictEqual(false);
+  board.receiveAttack(5, 5);
+  board.receiveAttack(5, 6);
+  expect(board.isGameOver()).toStrictEqual(true);
+});

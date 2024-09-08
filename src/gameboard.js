@@ -32,6 +32,19 @@ class Gameboard {
     cell.isShot = true;
     return true;
   }
+
+  isGameOver() {
+    for (let i = 0; i < this.board.length; i++) {
+      const col = this.board[i];
+      for (let j = 0; j < col.length; j++) {
+        const cell = col[j];
+        if (cell.ship !== null && !cell.isShot) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }
 
 export default Gameboard;
