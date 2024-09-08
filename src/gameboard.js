@@ -56,7 +56,16 @@ class Gameboard {
     let str = '';
     for (let y = 0; y < this.board.length; y++) {
       for (let x = 0; x < this.board.length; x++) {
-        str += `${this.board[x][y].ship !== null ? 'O' : '-'}`;
+        const cell = this.board[x][y];
+        if (cell.ship && cell.isShot) {
+          str += 'X';
+        } else if (cell.ship) {
+          str += 'O';
+        } else if (cell.isShot) {
+          str += '+';
+        } else {
+          str += '-';
+        }
       }
       str += '\n';
     }

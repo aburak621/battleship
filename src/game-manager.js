@@ -11,6 +11,7 @@ class GameManager {
     }
     this.shipTypes = [5, 4, 3, 3, 2];
     this.shipsPlaced = 0;
+    this.index = 0;
   }
 
   placeShip(x, y, vertical) {
@@ -21,6 +22,14 @@ class GameManager {
     }
     this.shipsPlaced++;
     return true;
+  }
+
+  playTurn(x, y) {
+    const success = this.players[(this.index + 1) % 2].gameboard.receiveAttack(x, y);
+    if (success) {
+      this.index = (this.index + 1) % 2;
+    }
+    return success;
   }
 }
 
