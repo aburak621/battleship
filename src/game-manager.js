@@ -12,6 +12,8 @@ class GameManager {
     this.shipTypes = [5, 4, 3, 3, 2];
     this.shipsPlaced = 0;
     this.index = 0;
+    this.gameOver = false;
+    this.winner = -1;
   }
 
   placeShip(x, y, vertical) {
@@ -27,6 +29,11 @@ class GameManager {
   playTurn(x, y) {
     const success = this.players[(this.index + 1) % 2].gameboard.receiveAttack(x, y);
     if (success) {
+      if (this.players[(this.index + 1) % 2].gameboard.isGameOver()) {
+        this.gameOver = true;
+        this.winner = this.index;
+        return success;
+      }
       this.index = (this.index + 1) % 2;
     }
     return success;
