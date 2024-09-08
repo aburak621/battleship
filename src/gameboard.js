@@ -20,4 +20,16 @@ class Gameboard {
     }
   }
 
+  receiveAttack(x, y) {
+    const cell = this.getCell(x, y);
+    if (cell.isShot) {
+      return false;
+    }
+
+    cell.ship.hit();
+    cell.isShot = true;
+    return true;
+  }
+}
+
 export default Gameboard;
