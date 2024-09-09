@@ -19,6 +19,11 @@ class Gameboard {
       vertical && y + length >= this.board[0].length) {
       return false;
     }
+    for (let i = 0; i < length; i++) {
+      if (this.getCell(x + i * !vertical, y + i * vertical).ship !== null) {
+        return false;
+      };
+    }
 
     for (let i = 0; i < length; i++) {
       this.setShip(x + i * !vertical, y + i * vertical, ship);
