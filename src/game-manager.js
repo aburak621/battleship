@@ -38,19 +38,6 @@ class GameManager {
     }
     return success;
   }
-
-  cpuPlaceShips() {
-    for (let i = 0; i < this.shipTypes.length; i++) {
-      let x;
-      let y;
-      let vertical;
-      do {
-        x = Math.floor(Math.random() * this.players[1].gameboard.board.length);
-        y = Math.floor(Math.random() * this.players[1].gameboard.board[0].length);
-        vertical = Math.random() < 0.5;
-      } while (!this.placeShip(x, y, vertical));
-    }
-  }
 }
 
 export default GameManager;

@@ -31,7 +31,7 @@ describe('Game Manager', () => {
       gameManager.placeShip(0, i, false);
     }
 
-    gameManager.cpuPlaceShips();
+    gameManager.players[1].cpuPlaceShips(gameManager);
 
     let shipCells = 0;
     for (let x = 0; x < gameManager.players[1].gameboard.board.length; x++) {
