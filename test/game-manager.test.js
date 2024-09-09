@@ -45,6 +45,27 @@ describe('Game Manager', () => {
     expect(shipCells).toStrictEqual(gameManager.shipTypes.reduce((acc, value) => acc + value, 0));
   });
 
+  test('cpu plays turn', () => {
+    gameManager.shipTypes = [2];
+
+    gameManager.placeShip(0, 0);
+    gameManager.players[1].cpuPlaceShips(gameManager);
+
+    gameManager.playTurn(0, 0);
+    gameManager.players[1].cpuPlayTurn(gameManager);
+
+    let cpuShot = false;
+    for (let x = 0; x < gameManager.players[0].gameboard.board.length; x++) {
+      for (let y = 0; y < gameManager.players[0].gameboard.board[0].length; y++) {
+        if (gameManager.players[0].gameboard.getCell(x, y).isShot === true) {
+          cpuShot = true;
+        }
+      }
+    }
+
+    expect(cpuShot).toStrictEqual(true);
+  });
+
   test('both players hit, miss, try to select already shot cell', () => {
     gameManager.shipTypes = [5, 4, 3, 3, 2];
     for (let i = 0; i < gameManager.shipTypes.length * 2; i++) {

@@ -18,6 +18,19 @@ class Player {
       } while (!gameManager.placeShip(x, y, vertical));
     }
   }
+
+  cpuPlayTurn(gameManager) {
+    let x;
+    let y;
+    let legalMove = false;
+    do {
+      x = Math.floor(Math.random() * this.gameboard.board.length);
+      y = Math.floor(Math.random() * this.gameboard.board[0].length);
+      const cell = gameManager.players[0].gameboard.getCell(x, y);
+      legalMove = !cell.isShot;
+    } while (!legalMove);
+    gameManager.playTurn(x, y);
+  }
 }
 
 export default Player;
