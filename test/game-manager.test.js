@@ -12,7 +12,8 @@ describe('Game Manager', () => {
     expect(gameManager.players[1].type).toStrictEqual('cpu');
   });
 
-  test('place both players\' ship', () => {
+  test('place both players\' ships', () => {
+    gameManager.shipTypes = [5, 4, 3, 3, 2];
     for (let i = 0; i < gameManager.shipTypes.length * 2; i++) {
       gameManager.placeShip(0, i, false);
     }
@@ -46,6 +47,7 @@ describe('Game Manager', () => {
   });
 
   test('both players hit, miss, try to select already shot cell', () => {
+    gameManager.shipTypes = [5, 4, 3, 3, 2];
     for (let i = 0; i < gameManager.shipTypes.length * 2; i++) {
       gameManager.placeShip(0, i, false);
     }
