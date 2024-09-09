@@ -25,6 +25,26 @@ describe('Game Manager', () => {
     }
   });
 
+  test('cpu places ships by itself', () => {
+    gameManager = new GameManager(true);
+    for (let i = 0; i < gameManager.shipTypes.length; i++) {
+      gameManager.placeShip(0, i, false);
+    }
+
+    gameManager.cpuPlaceShips();
+
+    let shipCells = 0;
+    for (let x = 0; x < gameManager.players[1].gameboard.board.length; x++) {
+      for (let y = 0; y < gameManager.players[1].gameboard.board[0].length; y++) {
+        if (gameManager.players[1].gameboard.getCell(x, y).ship !== null) {
+          shipCells++;
+        }
+      }
+    }
+
+    expect(shipCells).toStrictEqual(gameManager.shipTypes.reduce((acc, value) => acc + value, 0));
+  });
+
   test('both players hit, miss, try to select already shot cell', () => {
     for (let i = 0; i < gameManager.shipTypes.length * 2; i++) {
       gameManager.placeShip(0, i, false);
