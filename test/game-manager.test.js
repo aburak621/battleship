@@ -27,7 +27,6 @@ describe('Game Manager', () => {
   });
 
   test('cpu places ships by itself', () => {
-    gameManager = new GameManager(true);
     for (let i = 0; i < gameManager.shipTypes.length; i++) {
       gameManager.placeShip(0, i, false);
     }
